@@ -34,6 +34,7 @@ class ProductModel(models.Model):
     order = models.ForeignKey(OrderModel, on_delete=models.CASCADE, related_name='products')
     group = models.ForeignKey('GroupModel', on_delete=models.CASCADE, related_name='products')
     size = models.ForeignKey('SizeModel', on_delete=models.CASCADE, null=True, blank=True)
+    image = models.ImageField(null=True, blank=True)
     name = models.CharField(max_length=50)
     price = models.IntegerField()
     comment = models.TextField(null=True, blank=True)
@@ -41,13 +42,6 @@ class ProductModel(models.Model):
 
     def __str__(self) -> str:
         return self.name
-
-    
-
-
-class ImageModel(models.Model):
-    image = models.ImageField()
-    product = models.ForeignKey(ProductModel, on_delete=models.CASCADE)
 
 
 class GroupModel(models.Model):

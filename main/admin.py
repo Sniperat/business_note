@@ -1,9 +1,6 @@
 from django.contrib import admin
 from .models import *
 
-class StackInlineImage(admin.StackedInline):
-    model = ImageModel
-    extra = 0
 
 @admin.register(ProductModel)
 class AddressAdmin(admin.ModelAdmin):
@@ -30,7 +27,6 @@ class AddressAdmin(admin.ModelAdmin):
     list_display_links = ['id', 'name']
     list_filter = ('group', 'size')
     search_fields = ['name', 'price']
-    inlines = [StackInlineImage]
 
 
 class StackInlineProduct(admin.StackedInline):
@@ -60,5 +56,4 @@ class AddressAdmin(admin.ModelAdmin):
     inlines = [StackInlineSize, StackInlineProduct]
 
 
-admin.site.register(ImageModel)
 admin.site.register(SizeModel)
